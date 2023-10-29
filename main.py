@@ -31,6 +31,9 @@ class Stack1(Generic[T]):
     def __len__(self) -> int:
         return len(self.__items)
 
+    def __repr__(self) -> str:
+        return str(self.__items)
+
     @property
     def is_empty(self) -> bool:
         return len(self.__items) == 0
@@ -60,6 +63,9 @@ class Stack2[T]:
     def __len__(self) -> int:
         return len(self.__items)
 
+    def __repr__(self) -> str:
+        return str(self.__items)
+
     @property
     def is_empty(self) -> bool:
         return len(self.__items) == 0
@@ -74,6 +80,11 @@ class Main:
         stack.push(3)
 
         print(stack[-1])
+
+        new_stack: Stack1[int] = Stack1()
+        new_stack.push(1).push(2).push(3).push(4)
+
+        print(new_stack)
 
 
 if __name__ == "__main__":
