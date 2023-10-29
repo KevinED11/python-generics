@@ -1,4 +1,6 @@
 from typing import Generic, TypeVar, Self
+from collections import deque
+from queue import LifoQueue
 
 
 T = TypeVar("T")
@@ -24,7 +26,7 @@ class Stack1(Generic[T]):
         return self.__items.pop()
 
     def __getitem__(self, index: int) -> T:
-        if 0 > index >= self.__len__():
+        if index >= self.__len__():
             raise IndexError("Index out of range")
 
         return self.__items[index]
@@ -56,8 +58,8 @@ class Stack2[T]:
         return self.__items.pop()
 
     def __getitem__(self, index: int) -> T:
-        if 0 > index >= self.__len__():
-            raise IndexError("Index out of range")
+        if index >= self.__len__():
+            raise StackIsEmptyException("Index out of range")
 
         return self.__items[index]
 
@@ -87,6 +89,24 @@ class Main:
         new_stack.push(5, 6, 7, 8, 9, 10)
 
         print(new_stack)
+
+        # deque is not entirely thread-safe.
+        my_stack: deque[int] = deque()
+        my_stack.append(1)
+        my_stack.append(2)
+        my_stack.append(3)
+
+        print(my_stack)
+
+        # LifoQueue is thread-safe
+        lifo_queue: LifoQueue[int] = LifoQueue()
+        lifo_queue.put(1)
+        lifo_queue.put(2)
+        lifo_queue.put(3)
+
+        lifo_queue.get()
+
+        print(lifo_queue)
 
 
 if __name__ == "__main__":
