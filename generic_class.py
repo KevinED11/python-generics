@@ -1,5 +1,6 @@
 from typing import Generic, TypeVar, Self
 
+
 T = TypeVar("T")
 
 
@@ -36,7 +37,7 @@ class Stack1(Generic[T]):
 
     @property
     def is_empty(self) -> bool:
-        return len(self.__items) == 0
+        return self.__len__() == 0
 
 
 class Stack2[T]:
@@ -68,7 +69,7 @@ class Stack2[T]:
 
     @property
     def is_empty(self) -> bool:
-        return len(self.__items) == 0
+        return self.__len__() == 0
 
 
 class Main:
