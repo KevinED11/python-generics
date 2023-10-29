@@ -12,8 +12,8 @@ class Stack1(Generic[T]):
     def __init__(self) -> None:
         self.__items = []
 
-    def push(self, item: T) -> Self:
-        self.__items.append(item)
+    def push(self, *args: T) -> Self:
+        self.__items += args
 
         return self
 
@@ -44,8 +44,8 @@ class Stack2[T]:
     def __init__(self) -> None:
         self.__items = []
 
-    def push(self, item: T) -> Self:
-        self.__items.append(item)
+    def push(self, *args: T) -> Self:
+        self.__items += args
 
         return self
 
@@ -84,6 +84,7 @@ class Main:
 
         new_stack: Stack1[int] = Stack1()
         new_stack.push(1).push(2).push(3).push(4)
+        new_stack.push(5, 6, 7, 8, 9, 10)
 
         print(new_stack)
 
