@@ -1,4 +1,4 @@
-from typing import Generic, TypeVar
+from typing import Generic, TypeVar, Self
 
 T = TypeVar("T")
 
@@ -11,8 +11,10 @@ class Stack1(Generic[T]):
     def __init__(self) -> None:
         self.__items = []
 
-    def push(self, item: T) -> None:
+    def push(self, item: T) -> Self:
         self.__items.append(item)
+
+        return self
 
     def pop(self) -> T:
         if self.is_empty:
@@ -38,8 +40,10 @@ class Stack2[T]:
     def __init__(self) -> None:
         self.__items = []
 
-    def push(self, item: T) -> None:
+    def push(self, item: T) -> Self:
         self.__items.append(item)
+
+        return self
 
     def pop(self) -> T:
         if self.is_empty:
